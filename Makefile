@@ -40,6 +40,7 @@ install: retiredcheck $(MODFILES)
 	done
 	install -D -t $(DESTDIR)$(MODDIR) $(MODFILES)
 	strip --strip-debug $(MODULES:%=$(DESTDIR)$(MODDIR)/%.ko)
+	umask 022;
 	if test -z "$(DESTDIR)"; then $(DEPMOD) -a $(VM_UNAME); fi
 
 clean: $(SUBDIRS)
